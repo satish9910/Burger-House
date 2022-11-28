@@ -1,0 +1,43 @@
+.login-container {
+    text-align: center;
+    padding: 20px;
+}
+
+#login-h1 {
+    font-weight: 900;
+    text-align: center;
+}
+
+.login--label {
+    text-align: left;
+    width: 80%;
+    margin-top: 20px;
+
+}
+
+.login--form input {
+    width: 80%;
+}
+
+#forgot-link {
+    display: block;
+    text-indent: 50%;
+    margin-top: 10px;
+    text-decoration: none;
+
+}
+
+.login-button {
+    border-radius: 60px;
+    width: 80%;
+    margin-top: 40px;
+}
+
+.login-box {
+    text-align: center;
+    padding: 20px;
+}
+
+.login-box a {
+    text-decoration: none;
+}
