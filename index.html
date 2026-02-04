@@ -335,84 +335,50 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
         crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
         <script>
             const dark=()=>{
                 let mode=document.getElementById('dark-active');
-
                 mode.classList.toggle("dark-mode");
             }
 
-            const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-            if (!prefersReduced) {
-                gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
-
-                gsap.from(".text, #h1-burger, #week", {
-                    y: 24,
-                    opacity: 0,
-                    duration: 0.9,
-                    ease: "power3.out",
-                    stagger: 0.1
+            // Smooth scroll anchor links
+            document.querySelectorAll('a[href^="#"]').forEach((link) => {
+                link.addEventListener("click", (event) => {
+                    const target = document.querySelector(link.getAttribute("href"));
+                    if (!target) return;
+                    event.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 });
+            });
 
-                gsap.from(".box-1 img", {
-                    y: 20,
-                    opacity: 0,
-                    duration: 1.1,
-                    ease: "power3.out"
-                });
+            // Simple scroll animation trigger
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
 
-                gsap.utils.toArray(".burger-card-1").forEach((card) => {
-                    gsap.from(card, {
-                        scrollTrigger: {
-                            trigger: card,
-                            start: "top 85%"
-                        },
-                        y: 30,
-                        opacity: 0,
-                        duration: 0.8,
-                        ease: "power3.out"
-                    });
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                        observer.unobserve(entry.target);
+                    }
                 });
+            }, observerOptions);
 
-                gsap.from(".burger-row-2", {
-                    scrollTrigger: {
-                        trigger: ".burger-row-2",
-                        start: "top 80%"
-                    },
-                    y: 30,
-                    opacity: 0,
-                    duration: 1,
-                    ease: "power3.out"
-                });
+            document.querySelectorAll('.burger-card-1, .burger-row-2, .foot-row').forEach((el) => {
+                observer.observe(el);
+            });
 
-                gsap.from(".foot-row", {
-                    scrollTrigger: {
-                        trigger: ".foot-row",
-                        start: "top 85%"
-                    },
-                    y: 20,
-                    opacity: 0,
-                    duration: 0.8,
-                    ease: "power3.out"
+            // Card hover effect
+            document.querySelectorAll('.burger-card-1').forEach((card) => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-8px) scale(1.03)';
                 });
-
-                document.querySelectorAll('a[href^="#"]').forEach((link) => {
-                    link.addEventListener("click", (event) => {
-                        const target = document.querySelector(link.getAttribute("href"));
-                        if (!target) return;
-                        event.preventDefault();
-                        gsap.to(window, {
-                            duration: 0.6,
-                            ease: "power2.out",
-                            scrollTo: { y: target, offsetY: 70 }
-                        });
-                    });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0) scale(1)';
                 });
-            }
+            });
         </script>
 
 </body>
