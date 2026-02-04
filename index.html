@@ -18,7 +18,7 @@
 <body>
     <!-- ----------header-section--------- -->
 
-    <div class="box-header">
+    <div class="box-header" id="home">
         <nav class="navbar navbar-expand-lg">
             <div class="container">
                 <a class="navbar-brand" href="index.html"><img id="nav-logo" src="image/logo.png" alt=""></a>
@@ -30,7 +30,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active" aria-current="page" href="#home">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="our_story.html">Our Story</a>
@@ -49,12 +49,12 @@
                                 <li><a class="dropdown-item" href="New_Kings_Collection.html">New Kings Collection  </a></li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#">Contect Us</a>
-                        </li>
-                          <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#">About</a>
-                        </li>
+                                                <li class="nav-item">
+                                                        <a class="nav-link" aria-current="page" href="#footer">Contect Us</a>
+                                                </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" aria-current="page" href="#events">About</a>
+                                                </li>
                         <li class="nav-item">
                     
                     <a class="nav-link"><span  aria-current="page" id="dark-btn" onclick="dark()"></span></a>
@@ -84,16 +84,14 @@
                                     <div class="login-container">
                                         <h1 id="login-h1">Login</h1>
                                         <hr style="color:silver ;">
-                                        <label class="login--label">Username</label>
                                         <form class="login--form">
-                                            <input type="text">
+                                            <label class="login--label" for="login-username">Username</label>
+                                            <input id="login-username" type="text" placeholder="Enter username">
+                                            <label class="login--label" for="login-password">Password</label>
+                                            <input id="login-password" type="password" placeholder="Enter password">
+                                            <a id="forgot-link" href="#">Forgot Password?</a>
+                                            <button class="burger-btn login-button" type="button">Login</button>
                                         </form>
-                                        <label class="login--label">Password</label>
-                                        <form class="login--form">
-                                            <input type="password">
-                                        </form>
-                                        <a id="forgot-link" href="#">Forgot Password?</a>
-                                        <button class="burger-btn login-button ">Login</button>
                                     </div>
                                     <div class="login-box">
                                         <a href="#">Or Sign Up Using</a>
@@ -128,19 +126,15 @@
                                     <div class="login-container">
                                         <h1 id="login-h1">Sign Up</h1>
                                         <hr style="color:silver ;">
-                                        <label class="login--label">Username</label>
                                         <form class="login--form">
-                                            <input type="text">
+                                            <label class="login--label" for="signup-username">Username</label>
+                                            <input id="signup-username" type="text" placeholder="Create username">
+                                            <label class="login--label" for="signup-password">Password</label>
+                                            <input id="signup-password" type="password" placeholder="Create password">
+                                            <label class="login--label" for="signup-confirm">Confirm Password</label>
+                                            <input id="signup-confirm" type="password" placeholder="Confirm password">
+                                            <button class="burger-btn login-button" type="button">Sign Up</button>
                                         </form>
-                                        <label class="login--label">Password</label>
-                                        <form class="login--form">
-                                            <input type="password">
-                                        </form>
-                                        <label class="login--label">Comfirm-Password</label>
-                                        <form class="login--form">
-                                            <input type="password">
-                                        </form>
-                                        <button class="burger-btn login-button ">Sign Up</button>
                                     </div>
                                     <div class="login-box">
                                         <a href="#">Or Sign Up Using</a>
@@ -175,7 +169,14 @@
     </div>
     <!-- ---------second section-------- -->
     <div id="dark-active">
-    <div class="container-1">
+    <div class="discount-bar" id="discount">
+        <div class="discount-track">
+            <span>🔥 Big Discount Week! 30% OFF on all burgers • Free fries on combos • Order now! 🔥</span>
+            <span>🔥 Big Discount Week! 30% OFF on all burgers • Free fries on combos • Order now! 🔥</span>
+            <span>🔥 Big Discount Week! 30% OFF on all burgers • Free fries on combos • Order now! 🔥</span>
+        </div>
+    </div>
+    <div class="container-1" id="menu">
         <div class="burger-row">
             <span>ALWAYS TESTY BURGER</span>
             <h1>Choose & Enjoy</h1>
@@ -267,7 +268,7 @@
         </div>
         
         <!-----------------section-third---------------->
-        <div class="container">
+        <div class="container" id="events">
             <div class="burger-row-2">
                 <div class="burger-col-1">
                     <h6>Discover</h6>
@@ -286,7 +287,7 @@
     </div>
 
     <!------------------Footer-section------------ -->
-    <div class="foot-row">
+    <div class="foot-row" id="footer">
         <div class="footer-con-3">
             <div class="footer-box-1">
                 <h5>Download Our App</h5>
@@ -334,11 +335,83 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
         crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
         <script>
             const dark=()=>{
                 let mode=document.getElementById('dark-active');
 
                 mode.classList.toggle("dark-mode");
+            }
+
+            const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            if (!prefersReduced) {
+                gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+                gsap.from(".text, #h1-burger, #week", {
+                    y: 24,
+                    opacity: 0,
+                    duration: 0.9,
+                    ease: "power3.out",
+                    stagger: 0.1
+                });
+
+                gsap.from(".box-1 img", {
+                    y: 20,
+                    opacity: 0,
+                    duration: 1.1,
+                    ease: "power3.out"
+                });
+
+                gsap.utils.toArray(".burger-card-1").forEach((card) => {
+                    gsap.from(card, {
+                        scrollTrigger: {
+                            trigger: card,
+                            start: "top 85%"
+                        },
+                        y: 30,
+                        opacity: 0,
+                        duration: 0.8,
+                        ease: "power3.out"
+                    });
+                });
+
+                gsap.from(".burger-row-2", {
+                    scrollTrigger: {
+                        trigger: ".burger-row-2",
+                        start: "top 80%"
+                    },
+                    y: 30,
+                    opacity: 0,
+                    duration: 1,
+                    ease: "power3.out"
+                });
+
+                gsap.from(".foot-row", {
+                    scrollTrigger: {
+                        trigger: ".foot-row",
+                        start: "top 85%"
+                    },
+                    y: 20,
+                    opacity: 0,
+                    duration: 0.8,
+                    ease: "power3.out"
+                });
+
+                document.querySelectorAll('a[href^="#"]').forEach((link) => {
+                    link.addEventListener("click", (event) => {
+                        const target = document.querySelector(link.getAttribute("href"));
+                        if (!target) return;
+                        event.preventDefault();
+                        gsap.to(window, {
+                            duration: 0.6,
+                            ease: "power2.out",
+                            scrollTo: { y: target, offsetY: 70 }
+                        });
+                    });
+                });
             }
         </script>
 
